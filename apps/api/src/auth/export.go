@@ -9,6 +9,7 @@ func New(v1 fiber.Router) {
 	route := v1.Group("/auth")
 
 	route.Post("/login", Login)
+	route.Post("/reset", ResetPassword)
 }
 
 func RegisterUserRepository(c *fiber.Ctx, db *sqlx.DB) {

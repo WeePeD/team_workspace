@@ -13,6 +13,11 @@ func GenerateToken(uId uint, jwtSecret []byte, jwtRefreshSecret []byte) (string,
 	return accessToken, refreshToken
 }
 
+func GenerateAccessToken(uId uint, jwtSecret []byte) string {
+	accessToken := GenerateAccessClaims(uId, jwtSecret, 15*time.Minute)
+	return accessToken
+}
+
 func GenerateAccessClaims(uId uint, jwtSecret []byte, timeNumber time.Duration) string {
 	t := time.Now()
 	token := jwt.New(jwt.SigningMethodHS256)
